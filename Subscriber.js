@@ -4,7 +4,8 @@
 // the relay is an object but the subscriber itself is an array of functions (so you can order them)//
 
 
-// Issues usually are whenever a function is evaluated it will return an id and attach it's self to the subscriberRelay, hence why this is crude//
+// Issues: 
+// Whenever a function is evaluated it will attach it's self to the subscriberRelay and won't be deleted until set to the subscriber//
 
 // A global variable that caches the functions before they're passed on.
 const subscriberRelay = {};
@@ -14,7 +15,7 @@ Function.prototype._toString = Function.prototype.toString;
 
 
 //// We then override the toString method so that if it is asked to display its body it will instead return a numerical id while attaching a copy of this function the relay 
-// this way when we the reference we retain it's scope//
+// By using a copy we retain it's scope, i've used evaluation options before but wasn't happy with it//
 Function.prototype.toString = function()
 {
     if(!this.id)this.id = (function(str=""){ // generate a 16 digit number, with each digit randomised, as ID//
