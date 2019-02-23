@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="Subscriber.js"></script>
+    <script>
+
+        // Overriding events with a subscriber//
+
+        // As you can see below the onload property of the window is overwritten with the subscriber//
+        // The Invoke function is attached to the event//
+        // and then some functions are subscribed to onload//
+
+        window.createSubscriber("onload");
+
+        window.addEventListener("load",window.Invoke.bind(window,"onload"));
+
+        window.onload += function(){return "I "};
+        window.onload += function(a){return a + "have "};
+        window.onload += function(a){return a + "finished "};
+        window.onload += function(a){return a + "loading!!!"};
+        window.onload += function(a){alert(a)};
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
