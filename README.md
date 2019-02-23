@@ -33,13 +33,16 @@ Assign a Subscriber with Pre-subscribed functions:
     myObject.Tasks += function(c){ alert(c) };
     myObject.Invoke("Tasks", 1000); // alerts 100; returns 100;
     
-Assign a Multiple Subscribers at once;
+Assign Multiple Subscribers at once;
 
     myObject.createSubscriber({
       "Tasks":null,
       "TasksforAfter":function(a){ alert(a) },
       "TasksforWhenever": [function(a,b,c){ return a + "" + b + "" +c;},function(a){alert(a)}]
     });
+    
+    
+    
  
   
 
