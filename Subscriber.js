@@ -93,13 +93,15 @@ Object.prototype.createSubscriber = function(propertyNameorMap)
             // Put the functions into property//
             Object.defineProperty(this["_subscriber"],name,{value:prefunctions,enumerable:false,configurable:true});
 
-            // So, null when evaluated against another number or string returns 0 so our getter for the subscriber property will always return null//
+            // So, null when evaluated against another number or string returns 0 
+            //so our getter for the subscriber property will always return null//
 
             // When the += operator is used//
             // The numerical id of the function is passed through the setter 
             // it's then checked against the subscriberRelay to see if it exists and also whether it's a function//
-            // then it's checked to see if the id in question already exists and, if it passes all checks, is then puched onto the array//
-            // the function is then deleted from the relay ( this is where it gets a bit annoying )
+            // then it's checked to see if the id in question already exists and, if it passes all checks, 
+            // is then added onto the array
+            // the function is then deleted from the relay
 
             // When the -= operator is used//
             // The numerical id is shown as negative when sent through the setter
@@ -125,27 +127,3 @@ Object.prototype.createSubscriber = function(propertyNameorMap)
         }
     },this);
 }
-
-
-//// So taking the example: //
- 
-//        myObject.createSubscriber({
-//            "Tasks":[ function(a){return a;}, function(b){return b;} ],
-//            "TasksForLater":[]
-//        });
-
-// we then can create a new function///
-
-//        var someFunction(a){alert("the answer is : " + a);};
-
-// then subscribe the new function to the property like so: //
-
-//        myObject.Tasks += someFunction;
-
-// we can invoke the subscriber with:
-
-//        myObject.Invoke("Tasks");
-
-// and finally remove the function from the subscriber like this:
-
-//        myObject.Tasks -= someFunction;
