@@ -2,30 +2,27 @@
 A rudimentary JavaScript function subscriber that allows you to use Math operators in properties to add and remove functions
 
 Simple Use:
+```javascript
+    //Setting the Subscriber "Tasks" 
+    myObject.createSubscriber("Tasks");
 
-    Setting the Subscriber "Tasks" 
+    ///Create a new function
+    function someFunction(a){
+        alert("the answer is : " + a);
+    };
+    
+    ///Subscribe the new function
+    myObject.Tasks += someFunction;
 
-            myObject.createSubscriber("Tasks");
+    ///Invoke the Subscriber 
+    myObject.Invoke("Tasks");
 
-    Create a new function
+    ///Remove the function from the Subscriber
+    myObject.Tasks -= someFunction;
+```
 
-            function someFunction(a){
-                alert("the answer is : " + a);
-            };
-
-    Subscribe the new function
-
-           myObject.Tasks += someFunction;
-
-    Invoke the Subscriber 
-
-            myObject.Invoke("Tasks");
-
-    Remove the function from the Subscriber
-
-            myObject.Tasks -= someFunction;
-            
 Assign a Subscriber with Pre-subscribed functions:
+```javascript
     
     myObject.createSubscriber("Tasks" , function(a){return a - 500;}, function(b){return b - 400});
     myObject.Invoke("Tasks", 1000); // returns 100;
@@ -33,7 +30,9 @@ Assign a Subscriber with Pre-subscribed functions:
     myObject.Tasks += function(c){ alert(c) };
     myObject.Invoke("Tasks", 1000); // alerts 100; returns 100;
     
+```
 Assign Multiple Subscribers at once;
+```javascript
 
     myObject.createSubscriber({
       "Tasks":null,
@@ -41,6 +40,7 @@ Assign Multiple Subscribers at once;
       "TasksforWhenever": [function(a,b,c){ return a + "" + b + "" +c;},function(a){alert(a)}]
     });
     
+```
     
     
  
